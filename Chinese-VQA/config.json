@@ -1,0 +1,8 @@
+{
+    "userdict":"Preproccess/userdict.txt",
+
+    "split":"train",
+    "qa_dir":"Data/CH_QA",
+    "data_dir":"../Common",
+    "model_path":"../Common/vgg16.tfmodel"
+}

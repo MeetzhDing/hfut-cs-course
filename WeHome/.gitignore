@@ -1,0 +1,5 @@
+.DS_Store
+.vscode/launch.json
+miniprogram_npm
+node_modules
+package-lock.json

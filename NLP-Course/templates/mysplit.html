@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分词实验</title>
+</head>
+<body>
+    <b>前后最大匹配</b>
+    <ol>
+    {% for i in match_result %}
+    <li>{{ i }}</li>
+    {% endfor %}
+    </ol>
+
+    <br>
+
+    <b>2gram 方法</b>
+    <ol>  {% for i in ngram_result %}
+        <li>{{ i }}</li>
+      {% endfor %}
+    </ol>
+</body>
+</html>

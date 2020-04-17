@@ -1,0 +1,22 @@
+{
+  "name": "wehome-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "pm2 start process.prod.json --no-daemon",
+    "dev": "set debug=* & nodemon --config nodemon.json bin/www",
+    "initdb": "npm install && node tools/initdb.js"
+  },
+  "dependencies": {
+    "@alicloud/iot-2018-01-20": "^1.1.0",
+    "aliyun-iot-mqtt": "^0.0.4",
+    "cookie-parser": "~1.4.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "~3.0.2",
+    "express": "~4.17.1",
+    "http-errors": "~1.7.3",
+    "morgan": "~1.10.0",
+    "wafer-node-sdk": "^1.4.5"
+  }
+}

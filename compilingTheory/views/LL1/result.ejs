@@ -1,0 +1,122 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>结果</title>
+</head>
+<style>
+    body{
+        background-color: rgb(245, 245, 245);
+    }
+</style>
+<body>
+<div class="container">
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">FIRST集</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover">
+                <thead>
+                <th>符号</th>
+                <th>FIRST集</th>
+                </thead>
+                <tbody>
+                <% for(let [key,val] of first){ %>
+                <tr>
+                    <th><%= key %></th>
+                    <td><% for(let c of val){ %>
+                        <%= c+' ' %>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">FOLLOW集</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover">
+                <thead>
+                <th>符号</th>
+                <th>FOLLOW集</th>
+                </thead>
+                <tbody>
+                <% for(let [key,val] of follow){ %>
+                <tr>
+                    <th><%= key %></th>
+                    <td><% for(let c of val){ %>
+                        <%= c+' ' %>
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">LL1分析表</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th> </th>
+                <%  vt.delete('ε');
+                vt.add('#');
+                        for(let val of vt){  %>
+                <th><%= val %></th>
+                <% } %>
+                </thead>
+                <tbody>
+                <% for(let n of vn) { %>
+                <tr>
+                    <th><%= n %></th>
+                    <% for (let t of vt){ %>
+                    <% if (mat.get(n).get(t) != ''){ %>
+                    <td><%=n%>-><%= mat.get(n).get(t) %></td>
+                    <% }else{ %>
+                    <td> </td>
+                    <% } %>
+                    <% }%>
+                </tr>
+                <% }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">分析结果</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover">
+                <thead>
+                <th>步骤</th>
+                <th>符号栈</th>
+                <th>输入串</th>
+                <th>产生式</th>
+                <th>操作</th>
+                </thead>
+                <tbody>
+                <%  let i =0;
+                        for(let [msg1,msg2,msg3,msg4] of result){ %>
+                <tr>
+                    <th><%= i %></th>
+                    <th><%= msg1 %></th>
+                    <th><%= msg2 %></th>
+                    <th><%= msg3 %></th>
+                    <th><%= msg4 %></th>
+                </tr>
+                <% i+=1; }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

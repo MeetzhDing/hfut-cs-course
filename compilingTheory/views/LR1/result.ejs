@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>结果</title>
+</head>
+<style>
+    body{
+        background-color: rgb(245, 245, 245);
+    }
+</style>
+<body>
+<div class="container">
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">分析结果</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover">
+                <thead>
+                <th>步骤</th>
+                <th>状态栈</th>
+                <th>符号栈</th>
+                <th>输入串</th>
+                <th>动作说明</th>
+                </thead>
+                <tbody>
+                <% for(let [msg1,msg2,msg3,msg4,msg5] of result){ %>
+                <tr>
+                    <th><%= msg1 %></th>
+                    <th><% for (let i of msg2){%>
+                        <%= i %>
+                        <% }%></th>
+                    <th><% for (let i of msg3){%>
+                        <%= i %>
+                        <% }%></th>
+                    <th><%= msg4 %></th>
+                    <th><%= msg5 %></th>
+                </tr>
+                <% }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p class="h1 text-center" style="margin-top: 5%;margin-bottom: 2%">LR1分析表</p>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <th>状态</th>
+                <%  vt.delete('ε');
+                vt.add('#');
+                        for(let t of vt){  %>
+                <th><%= t %></th>
+                <% } %>
+                <%   for(let t of vn){  %>
+                <th><%= t %></th>
+                <% } %>
+                </thead>
+                <tbody>
+                <%  let iter1 = Action[Symbol.iterator]();
+                let iter2 = GoTo[Symbol.iterator]();
+                for(let i=0,size = Action.length; i< size; i+=1){ %>
+                <tr>
+                    <td><%=i+1%></td>
+                    <%  let act = iter1.next().value;
+                            for (let t of vt){ %>
+                    <td><%= act.get(t) %></td>
+                    <% } %>
+                    <%  let go = iter2.next().value;
+                            for (let t of vn){ %>
+                    <td><%= go.get(t) %></td>
+                    <%  } %>
+                </tr>
+                <% }%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

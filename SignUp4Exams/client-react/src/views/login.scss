@@ -1,0 +1,48 @@
+#page {
+  background: #07b;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#loginWarp {
+  padding-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#loginTitle {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+#loginInfo {
+  width: 400px;
+  height: 320px;
+  background: #ccddee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 35px;
+}
+
+.login-form {
+  max-width: 300px;
+  width: 300px;
+}
+.login-form-forget {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+.login-input {
+  color: rgba(0, 0, 0, .25)
+}
+
+.link-button {
+  padding: 0;
+  margin: 0;
+}

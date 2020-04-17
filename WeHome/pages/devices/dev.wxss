@@ -1,0 +1,4 @@
+/* pages/index/devices/dev.wxss */
+.pure-text {
+  font-size: 34rpx;
+}

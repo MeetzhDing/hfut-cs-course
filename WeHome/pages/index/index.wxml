@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="userinfo">
+        <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}" background-size="cover"></image>
+        <view>
+            <button class="userinfo-nickname" wx:if="{{!logged}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="doLogin">点击登录</button>
+            <text class="userinfo-nickname" decode="{{true}}" wx:else>&nbsp;&nbsp;&nbsp;{{userInfo.nickName}}</text>
+        </view>
+        <text></text>
+        <button class="logout" wx:if="{{logged}}" bindtap='clearSession' >注销</button>
+    </view>
+
+    <text>\n\n</text>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_access">
+            <view class="weui-cell__bd">连接状态</view>
+            <view class="weui-cell__ft" style="font-size: 0">
+                <view wx:if="{{!connected}}" style="display: inline-block;vertical-align:middle; font-size: 17px;">未连接到iot平台</view>
+                <view wx:else style="display: inline-block;vertical-align:middle; font-size: 17px;">已连接到iot平台</view>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">添加设备</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" bindinput='inputDeviceName' placeholder="{{deviceName}}" />
+                </view>
+                <view>
+                  <image class="tap-scan" src="../../images/scan.png" bindtap='tapScan'></image>
+                </view>
+                <view class="weui-cell__ft">
+                    <view class="weui-vcode-btn" bindtap='addDevice'>添加</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view wx:if="{{logged && devicesInfo.length}}" class="weui-cells weui-cells_after-title">
+      <block wx:for="{{devicesInfo}}" wx:key="key">
+      <navigator url="../devices/dev?index={{index}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{item.DeviceName}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">详情</view>
+      </navigator>
+      </block>
+    </view>
+
+
+</view>

@@ -1,0 +1,75 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">设备控制</view>
+        <!-- <view class="page__desc">表单预览</view> -->
+    </view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">设备信息</view>
+                    <view class="weui-form-preview__value_in-hd">
+                      <view wx:if="{{Status==='ONLINE'}}">
+                        <text class="pure-text" >在线</text>
+                        <switch checked="{{checked==='on'}}" bindchange="changeDeviceState" />
+                      </view>
+                      <view wx:else>
+                        <text class="pure-text" >离线</text>
+                      </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">productKey</view>
+                    <view class="weui-form-preview__value">{{ProductKey}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">deviceName</view>
+                    <view class="weui-form-preview__value">{{DeviceName}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">deviceSecret</view>
+                    <view class="weui-form-preview__value">{{DeviceSecret}}</view>
+                </view>
+            </view>
+        </view>
+
+        <text> \n </text>
+
+        <view class="weui-panel__hd">定时设置</view>
+          <view class="weui-panel__bd">
+            <view class="weui-cell weui-cell_switch">
+              <view class="weui-cell__bd">启动定时</view>
+              <view class="weui-cell__ft">
+                <switch checked="{{timing.running}}" bindchange="timingChange" />
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">计划</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="selector" bindchange="bindPlanChange" value="{{timing.plan}}" range="{{timing.range}}">
+                  <view class="weui-select weui-select_in-select-after">{{timing.plan}}</view>
+                </picker>
+              </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">时间</view>
+              </view>
+              <view class="weui-cell__bd">
+                <picker mode="time" bindchange="bindTimeChange" value="{{timing.time}}" >
+                  <view class="weui-select weui-select_in-select-after">{{timing.time}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+
+        <text> \n </text>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="default" bindtap="deleteConfirm">删除设备</button>
+        </view>
+      </view>
+</view>

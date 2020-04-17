@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon --config nodemon.json app.js"
+  },
+  "dependencies": {
+    "alipay-node-sdk": "^1.1.9",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.5",
+    "ejs": "~3.0.2",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.3",
+    "http-errors": "^1.7.3",
+    "knex": "^0.20.15",
+    "morgan": "~1.10.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.6",
+    "utility": "^1.16.3",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "debug": "^4.1.1",
+    "nodemon": "^2.0.3"
+  }
+}
